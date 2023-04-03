@@ -44,14 +44,14 @@ cv::Mat ReprojectToGroundPlane(const cv::Mat input,
             1. Create 2D homogeneous point for current output position
             2. Calculate 2D homogeneous point for source image w/ homography
             3. Create cv::Point2i points for 2D source and destination positions
-            4. Set soutput image points as appropriate
+            4. Set output image points as appropriate
             */
 
             const cv::Vec3d dest_vec(x, y, 1); // Creates object with constructor, assigns to variable
             const cv::Vec3d src_vec = cv::Mat1d(homography.inv() * dest_vec); // Object created from operation, assigned to variable
 
-             const cv::Point2i dest_point(x, y);
-             const cv::Point2i src_point(src_vec[0] / src_vec[2], src_vec[1] / src_vec[2]);
+            const cv::Point2i dest_point(x, y);
+            const cv::Point2i src_point(src_vec[0] / src_vec[2], src_vec[1] / src_vec[2]);
 
             if (src_point.inside(cv::Rect(cv::Point(), input.size()))) {
                 output.at<uint8_t>(dest_point) = input.at<uint8_t>(src_point);
