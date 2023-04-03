@@ -48,7 +48,7 @@ class ControllerTestClient : public rclcpp::Node {
             }
         }
 
-        void FeedbackCallback(GoalHandle::SharedPtr,
+        void FeedbackCallback(GoalHandle::SharedPtr goal_handle,
                               const std::shared_ptr<const FollowPath::Feedback> feedback) {
             RCLCPP_INFO(get_logger(), "Distance to goal: %f", feedback->distance_to_goal);
         }
