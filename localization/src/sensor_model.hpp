@@ -34,7 +34,7 @@ public:
   virtual ~SensorModel() = default;
   virtual double ComputeLogProb(const Particle & particle) = 0;
   virtual double ComputeLogNormalizer() = 0;
-  virtual bool IsMeasurementAvailable(const rclcpp::Time & cur_time) = 0;
+  virtual bool IsMeasurementAvailable(const rclcpp::Time & curr_time) = 0;
 
 protected:
   std::vector<double> covariance_;
